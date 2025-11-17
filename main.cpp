@@ -19,16 +19,16 @@
 
 
 // ------------- DESIGN DOCUMENT -------------
-// A. INPUT ✅: 
-// B. OUTPUT ✅:
-// C. CALCULATIONS ✅:
-// D. LOGIC and ALGORITHMS ✅:
+// A. INPUT ✅: yes
+// B. OUTPUT ✅: yes
+// C. CALCULATIONS ✅: yes
+// D. LOGIC and ALGORITHMS ✅: yes
 //    (Optional) flow chart link or file name: 
 
 
 // ------------- TESTING -------------
-// PASS ALL GIVEN SAMPLE RUN TESTS ✅: 
-// (Optional) Additional tests count:   
+// PASS ALL GIVEN SAMPLE RUN TESTS ✅: yes
+// (Optional) Additional tests count: 1  
 
 
 // ------------- CODE -------------
@@ -39,9 +39,9 @@
 using namespace std;
 
 // constants
-double assigWeight = 0.6;
-double midtermWeight = 0.2;
-double finalWeight = 0.2;
+const double assigWeight = 0.6;
+const double midtermWeight = 0.2;
+const double finalWeight = 0.2;
 
 // function prototypes
 void welcome();
@@ -123,7 +123,7 @@ return score;
 
 double assignAverage(int numAssigns) {
   double aSum = 0.0;
-  if (numAssigns == 0.0) {
+  if (numAssigns == 0) {
     return 0.0;
   }
 for (int i = 1; i <= numAssigns; ++i) {
@@ -157,27 +157,138 @@ else {
 
 // ------------- DESIGN -------------
 /* 
-Program Name:
+Program Name: Final Exam Calculator
 
 Program Description:
 
 Design:
 A. INPUT
-Define the input variables including name data type. 
+int aNum         
+double score       
+double midterm      
+double finalExam    
 
 B. OUTPUT
-Define the output variables including data types. 
+double finalScore
+char letterGrade
 
 C. CALCULATIONS
-Describe calculations used by algorithms in step D.  
-List all formulas. 
-If there are no calculations needed, state there are no calculations.
+// constants
+double assigWeight = 0.6;
+double midtermWeight = 0.2;
+double finalWeight = 0.2;
+// calculations
+aSum += aScore
+aSum / numAssigns
+(assignAvg * assigWeight) + (midterm * midtermWeight) + (finalExam * finalWeight)
 
 D. LOGIC and ALGORITHMS
-Design the logic of your program using pseudocode or flowcharts. 
-Use conditionals, loops, functions or array constructs.
-List the steps in transforming inputs into outputs. 
-https://github.com/Glen-Sasek-PCC-Instructor/2025-06-22/blob/main/Pseudocode-Reference.txt
+// funct protoypes
+void welcome()
+int readInt(string prompt)
+double readScore(string prompt)
+double assignAverage(int numAssigns)
+double calcFinalScore(double assignAvg, double midterm, double finalExam)
+char calcLetterGrade(double finalScore);
+// main
+main() {
+    welcome();
+
+    int numAssigns = readInt("Enter the number of assignments (0 to 10): ");
+
+    double assignAvg = assignAverage(numAssigns);
+
+    double midterm = readScore("Enter your midterm exam score: ");
+    double finalExam = readScore("Enter your final exam score: ");
+
+    double finalScore = calcFinalScore(assignAvg, midterm, finalExam);
+    char letterGrade = calcLetterGrade(finalScore);
+
+    fixed << setprecision(1)
+    DISPLAY "Your Final Numeric score is: " << finalScore
+    DISPLAY "Your Final Grade is: " << letterGrade
+
+    RETURN 0;
+}
+
+VOID welcome() {
+  DISPLAY "Welcome to my Final Grade Calculator!"
+  DISPLAY "Please enter the following information and I will calculate your Final Numerical Grade and Letter Grade for you!"
+  DISPLAY "The number of assignments must be between 0 and 10."
+  DISPLAY "All scores entered must be between 0 and 4."
+}
+INT readInt(string prompt) {
+  int aNum
+  bool valid = false
+
+  WHILE (valid == false) {
+    DISPLAY prompt
+  INPUT aNum
+
+  IF (!cin.fail() && aNum >= 0 && aNum <= 10) {
+    valid = true
+  }
+  ELSE {
+    DISPLAY "Illegal Value! Please try again!"
+    cin.clear()
+    cin.ignore(1000, '\n')
+  }
+}
+RETURN aNum;
+}
+
+DOUBLE readScore(string prompt) {
+  double score
+  bool valid = false
+
+  WHILE (valid == false) {
+    DISPLAY prompt
+    INPUT score
+
+  IF (!cin.fail() && score >= 0 && score <= 4) {
+    valid = true
+  }
+  else {
+    DISPLAY "Illegal Score! Please try again!"
+    cin.clear()
+    cin.ignore(1000, '\n')
+  }
+  }
+RETURN score;
+}
+
+DOUBLE assignAverage(int numAssigns) {
+  double aSum = 0.0
+  IF (numAssigns == 0.0) {
+    RETURN 0.0;
+  }
+FOR (int i = 1; i <= numAssigns; ++i) {
+  double aScore = readScore("Enter score: " + to_string(i) + ": ")
+  // calculate aSum
+}
+RETURN // calculate avg
+}
+
+DOUBLE calcFinalScore(double assignAvg, double midterm, double finalExam) {
+  RETURN // calculate final score
+
+CHAR calcLetterGrade(double finalScore) {
+  IF (finalScore >= 3.3) {
+  return 'A'
+  }
+ELSE IF (finalScore >= 2.8) {
+  return 'B'
+}
+ELSE IF (finalScore >= 2.0) {
+  return 'C'
+}
+ELSE IF (finalScore >= 1.2) {
+  return 'D'
+}
+ELSE {
+  return 'F'
+}
+}
 
 
 SAMPLE RUNS
